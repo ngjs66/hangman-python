@@ -4,6 +4,16 @@
 import random
 import sys
 
-word_list = random.choice(word)
+wordList = ["samsung", "apple", "huawei", "motorola" , "oneplus", "honor", "xiaomi", "google"]
+
+def choose():
+    # gets a random word from a list
+    wordList = random.choice(word)
+
+def hint(word):
+    print("The length of the word is: %d" % len(word))
 
 def main():
+    print("Welcome to the program: Hangman!")
+    name = input("Please enter your name: ")
+    hint()

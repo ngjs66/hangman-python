@@ -17,3 +17,36 @@ def main():
     print("Welcome to the program: Hangman!")
     name = input("Please enter your name: ")
     hint()
+
+
+
+
+import random
+
+l_word = ["secret","apple","mango"]
+word = random.choice(l_word)
+guesses = ''
+turns = 10
+while turns > 0:
+failed = 0
+for char in word:
+if char in guesses:
+print (char,end=" " )
+else:
+print ("-", end = " ")
+failed += 1
+if failed == 0:
+print ("\n You won")
+break
+if turns == 10:
+print("\nhint:The word is of ",+ len(word),"characters")
+turns -= 1
+guess = input("\nguess a character: ")
+
+guesses += guess
+if guess not in word:
+turns -= 1
+print ("\nWrong")
+print ("\nYou have", + turns, 'more guesses' )
+if turns == 0:
+print ("\nYou Loose")

@@ -40,6 +40,7 @@ word = "secret"
 
 # creates an variable with an empty value
 guesses = ''
+print("The amount of characters in the word is %s." % len(word))
 
 # determine the number of turns
 turns = 10

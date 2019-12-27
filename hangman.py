@@ -1,52 +1,100 @@
 #!/usr/bin/env python3
 # This is a Hangman program written in Python. 
 
-import random
-import sys
+# import random
+# import sys
 
-wordList = ["samsung", "apple", "huawei", "motorola" , "oneplus", "honor", "xiaomi", "google"]
+# wordList = ["samsung", "apple", "huawei", "motorola" , "oneplus", "honor", "xiaomi", "google"]
 
-def choose():
-    # gets a random word from a list
-    wordList = random.choice(word)
+# def choose():
+#     # gets a random word from a list
+#     wordList = random.choice(word)
 
-def hint(word):
-    print("The length of the word is: %d" % len(word))
+# def hint(word):
+#     print("The length of the word is: %d" % len(word))
 
-def main():
-    print("Welcome to the program: Hangman!")
-    name = input("Please enter your name: ")
-    hint()
-
-
+# def main():
+#     print("Welcome to the program: Hangman!")
+#     name = input("Please enter your name: ")
+#     hint()
 
 
-import random
 
-l_word = ["secret","apple","mango"]
-word = random.choice(l_word)
+
+# hangman, optimization for python 3 by Andro
+import time
+
+#welcoming the user
+name = input("What is your name? \n")
+
+print("Hello, " + name, ", time to play hangman!")
+
+#wait for 1 second
+time.sleep(1)
+
+print("Start guessing...")
+time.sleep(0.5)
+
+# here we set the secret
+word = "secret"
+
+# creates an variable with an empty value
 guesses = ''
-turns = 10
-while turns > 0:
-failed = 0
-for char in word:
-if char in guesses:
-print (char,end=" " )
-else:
-print ("-", end = " ")
-failed += 1
-if failed == 0:
-print ("\n You won")
-break
-if turns == 10:
-print("\nhint:The word is of ",+ len(word),"characters")
-turns -= 1
-guess = input("\nguess a character: ")
 
-guesses += guess
-if guess not in word:
-turns -= 1
-print ("\nWrong")
-print ("\nYou have", + turns, 'more guesses' )
-if turns == 0:
-print ("\nYou Loose")
+# determine the number of turns
+turns = 10
+
+# while loop checks if the turns are more than zero
+while turns > 0:
+# make a counter that starts with zero
+    failed = 0
+
+# for every character in secret_word
+    for char in word:
+
+# see if the character is in the players guess
+        if char in guesses:
+
+# print then out the character
+            print(char)
+
+        else:
+
+# if not found, print a dash
+            print("_"),
+
+# and increase the failed counter with one
+    failed += 1
+
+# if failed is equal to zero
+
+# print You Won
+    if failed == 0:
+        print("You won \n")
+
+# exit the script
+        break
+
+# ask the user go guess a character
+    guess = input("Guess a character: \n")
+
+# set the players guess to guesses
+    guesses += guess
+
+# if the guess is not found in the secret word
+    if guess not in word:
+
+# turns counter decreases with 1 (now 9)
+        turns -= 1
+
+# print wrong
+        print("Wrong! \n")
+
+# how many turns are left
+        print ("You have", + turns, "more guesses")
+
+# if the turns are equal to zero
+        if turns == 0:
+
+# print "You Loose"
+            print("You lose!")
